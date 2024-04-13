@@ -1,0 +1,3 @@
+/home/nubsdre/Documentos/code/cpp/compiler/hydrogen/build/CMakeFiles/hydro.dir
+/home/nubsdre/Documentos/code/cpp/compiler/hydrogen/build/CMakeFiles/edit_cache.dir
+/home/nubsdre/Documentos/code/cpp/compiler/hydrogen/build/CMakeFiles/rebuild_cache.dir
