@@ -23,7 +23,6 @@ class Tokenizer {
 private:
   const std::string src;
   size_t index{};
-  std::string buf;
 
   std::optional<char> peek(size_t offset = 0) {
     if (src[index + offset]) {
