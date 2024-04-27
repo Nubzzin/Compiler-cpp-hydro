@@ -12,6 +12,8 @@ enum class TokenType {
   Exit,
   IntLit,
   SemiCo,
+  ParenOpen,
+  ParenClose,
 };
 
 struct Token {
@@ -77,6 +79,14 @@ public:
       } else if (std::isspace(peek().value())) {
         consume();
         continue;
+      } else if (peek().value() == '(') {
+        tokens.push_back({.type = TokenType::ParenOpen});
+        consume();
+        buf.clear();
+      } else if (peek().value() == ')') {
+        tokens.push_back({.type = TokenType::ParenClose});
+        consume();
+        buf.clear();
       } else {
         std::cerr << "Syntax error!" << std::endl;
         exit(EXIT_FAILURE);

@@ -203,6 +203,7 @@ CMakeFiles/hydro.dir/src/main.cpp.o: /home/nubsdre/Documentos/code/projects/comp
   /usr/include/c++/12/bits/stl_vector.h \
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
+  /home/nubsdre/Documentos/code/projects/compiler-cpp/src/parser.h \
   /home/nubsdre/Documentos/code/projects/compiler-cpp/src/tokenizer.h \
   /usr/include/c++/12/optional \
   /usr/include/c++/12/bits/enable_special_members.h
@@ -211,6 +212,8 @@ CMakeFiles/hydro.dir/src/main.cpp.o: /home/nubsdre/Documentos/code/projects/comp
 /usr/include/c++/12/bits/enable_special_members.h:
 
 /home/nubsdre/Documentos/code/projects/compiler-cpp/src/tokenizer.h:
+
+/home/nubsdre/Documentos/code/projects/compiler-cpp/src/parser.h:
 
 /usr/include/c++/12/bits/stl_bvector.h:
 
