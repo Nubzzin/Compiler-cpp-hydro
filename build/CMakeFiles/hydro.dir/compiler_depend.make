@@ -196,6 +196,8 @@ CMakeFiles/hydro.dir/src/main.cpp.o: /home/nubsdre/Documentos/code/projects/comp
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++io.h \
   /usr/include/c++/12/bits/fstream.tcc \
   /usr/include/c++/12/iostream \
+  /usr/include/c++/12/optional \
+  /usr/include/c++/12/bits/enable_special_members.h \
   /usr/include/c++/12/sstream \
   /usr/include/c++/12/bits/sstream.tcc \
   /usr/include/c++/12/vector \
@@ -204,12 +206,8 @@ CMakeFiles/hydro.dir/src/main.cpp.o: /home/nubsdre/Documentos/code/projects/comp
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/nubsdre/Documentos/code/projects/compiler-cpp/src/parser.h \
-  /home/nubsdre/Documentos/code/projects/compiler-cpp/src/tokenizer.h \
-  /usr/include/c++/12/optional \
-  /usr/include/c++/12/bits/enable_special_members.h
+  /home/nubsdre/Documentos/code/projects/compiler-cpp/src/tokenizer.h
 
-
-/usr/include/c++/12/bits/enable_special_members.h:
 
 /home/nubsdre/Documentos/code/projects/compiler-cpp/src/tokenizer.h:
 
@@ -222,6 +220,8 @@ CMakeFiles/hydro.dir/src/main.cpp.o: /home/nubsdre/Documentos/code/projects/comp
 /usr/include/c++/12/bits/stl_uninitialized.h:
 
 /usr/include/c++/12/sstream:
+
+/usr/include/c++/12/bits/enable_special_members.h:
 
 /usr/include/c++/12/bits/fstream.tcc:
 

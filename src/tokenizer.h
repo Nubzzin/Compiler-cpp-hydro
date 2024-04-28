@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <optional>
+#include <ostream>
 #include <string>
 #include <vector>
 
@@ -14,6 +15,7 @@ enum class TokenType {
   SemiCo,
   ParenOpen,
   ParenClose,
+  PlusOp,
 };
 
 struct Token {
@@ -60,8 +62,9 @@ public:
         }
 
         if (buf == "exit") {
-          tokens.push_back({.type = TokenType::Exit});
+          tokens.push_back({.type = TokenType::Exit, .value = buf}); // Debug
           buf.clear();
+          continue;
         }
       } else if (std::isdigit(peek().value())) {
         buf.push_back(peek().value());
@@ -72,21 +75,28 @@ public:
         }
         tokens.push_back({.type = TokenType::IntLit, .value = buf});
         buf.clear();
+        continue;
       } else if (peek().value() == ';') {
-        tokens.push_back({.type = TokenType::SemiCo});
+        tokens.push_back({.type = TokenType::SemiCo,
+                          .value = std::string{peek().value()}}); // Debug
         consume();
         buf.clear();
+        continue;
+      } else if (peek().value() == '(') {
+        tokens.push_back({.type = TokenType::ParenOpen,
+                          .value = std::string{peek().value()}}); // Debug
+        consume();
+        buf.clear();
+        continue;
+      } else if (peek().value() == ')') {
+        tokens.push_back({.type = TokenType::ParenClose,
+                          .value = std::string{peek().value()}}); // Debug
+        consume();
+        buf.clear();
+        continue;
       } else if (std::isspace(peek().value())) {
         consume();
         continue;
-      } else if (peek().value() == '(') {
-        tokens.push_back({.type = TokenType::ParenOpen});
-        consume();
-        buf.clear();
-      } else if (peek().value() == ')') {
-        tokens.push_back({.type = TokenType::ParenClose});
-        consume();
-        buf.clear();
       } else {
         std::cerr << "Syntax error!" << std::endl;
         exit(EXIT_FAILURE);
