@@ -63,21 +63,21 @@ public:
             consume();
           }
           if (peek()->type != TokenType::ParenClose) {
-            std::cerr << "Falta fechar parenteses" << std::endl;
+            std::cerr << "\nFalta fechar parenteses" << std::endl;
             exit(EXIT_FAILURE);
           }
         } else {
-          std::cerr << "Falta abrir parenteses" << std::endl;
+          std::cerr << "\nFalta abrir parenteses" << std::endl;
           exit(EXIT_FAILURE);
         }
 
         consume();
         if (node_exit.value.values.size() != 1) {
-          std::cerr << "Muitos argumentos" << std::endl;
+          std::cerr << "\nArgumentos incorretos!" << std::endl;
           exit(EXIT_FAILURE);
         }
         if (peek()->type != TokenType::SemiCo) {
-          std::cerr << "Falta uso de \";\"" << std::endl;
+          std::cerr << "\nFalta uso de \";\"" << std::endl;
           exit(EXIT_FAILURE);
         }
         node_body.values.push_back(node_exit);
@@ -85,7 +85,7 @@ public:
       }
       return node_body;
     } else {
-      std::cerr << "Metodo não reconhecido!" << std::endl;
+      std::cerr << "\nMetodo não reconhecido!" << std::endl;
       exit(EXIT_FAILURE);
     }
     return {};
