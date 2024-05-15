@@ -11,9 +11,11 @@
 #include "tokenizer.h"
 
 int main(int argc, char *argv[]) {
-  if (argc != 2) {
-    std::cerr << "Muitos argumentos!" << std::endl;
-  }
+  // DEBUG
+  // if (argc != 2) {
+  //   std::cerr << "Muitos argumentos!" << std::endl;
+  //   return EXIT_FAILURE;
+  // }
 
   // Test time
   std::fstream file(/*argv[1]*/ "test.hy", std::ios::in);

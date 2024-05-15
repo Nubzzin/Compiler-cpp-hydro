@@ -8,11 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/nubsdre/Documentos/code/projects/compiler-cpp/src/main.cpp" "CMakeFiles/hydro.dir/src/main.cpp.o" "gcc" "CMakeFiles/hydro.dir/src/main.cpp.o.d"
+  "/home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/src/main.cpp" "CMakeFiles/hydro.dir/src/main.cpp.o" "gcc" "CMakeFiles/hydro.dir/src/main.cpp.o.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

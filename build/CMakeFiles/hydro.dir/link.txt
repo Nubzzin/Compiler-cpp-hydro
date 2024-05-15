@@ -1,1 +1,1 @@
-/usr/bin/g++ CMakeFiles/hydro.dir/src/main.cpp.o -o hydro 
+/usr/bin/c++ CMakeFiles/hydro.dir/src/main.cpp.o -o hydro

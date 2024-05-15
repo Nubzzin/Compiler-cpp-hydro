@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/nubsdre/Documentos/code/projects/compiler-cpp/build",
-		"source" : "/home/nubsdre/Documentos/code/projects/compiler-cpp"
+		"build" : "/home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build",
+		"source" : "/home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 7
 	}
 }
