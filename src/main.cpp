@@ -19,11 +19,16 @@ int main(int argc, char *argv[]) {
 
   // Test time
   std::fstream file(argv[1], std::ios::in);
-  std::stringstream contents;
   if (!file.is_open()) {
-    std::cerr << "Falha ao encontrar arquivo: " << argv[1] << std::endl;
+    if (argv[1] != NULL) {
+      std::cerr << "Falha ao encontrar arquivo: " << argv[1] << std::endl;
+    } else {
+      std::cerr << "Uso: hydro [arquivo.hy]" << std::endl;
+    }
     return EXIT_FAILURE;
   }
+
+  std::stringstream contents;
   contents << file.rdbuf();
   file.close();
 
