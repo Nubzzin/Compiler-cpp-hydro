@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro
+CMAKE_SOURCE_DIR = /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build
+CMAKE_BINARY_DIR = /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build/CMakeFiles /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

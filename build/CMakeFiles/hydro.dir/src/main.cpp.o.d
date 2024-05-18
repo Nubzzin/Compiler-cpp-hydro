@@ -1,5 +1,5 @@
 CMakeFiles/hydro.dir/src/main.cpp.o: \
- /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/src/main.cpp \
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/14.1.1/cctype \
  /usr/include/c++/14.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/14.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -149,5 +149,8 @@ CMakeFiles/hydro.dir/src/main.cpp.o: \
  /usr/include/c++/14.1.1/bits/stl_vector.h \
  /usr/include/c++/14.1.1/bits/stl_bvector.h \
  /usr/include/c++/14.1.1/bits/vector.tcc \
- /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/src/parser.h \
- /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/src/tokenizer.h
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/parser.h \
+ /usr/include/c++/14.1.1/variant \
+ /usr/include/c++/14.1.1/bits/parse_numbers.h \
+ /usr/include/c++/14.1.1/ext/aligned_buffer.h \
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/tokenizer.h

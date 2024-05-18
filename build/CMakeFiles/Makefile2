@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro
+CMAKE_SOURCE_DIR = /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build
+CMAKE_BINARY_DIR = /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/hydro.dir/clean
 CMakeFiles/hydro.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hydro.dir/build.make CMakeFiles/hydro.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hydro.dir/build.make CMakeFiles/hydro.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build/CMakeFiles --progress-num=1,2 "Built target hydro"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles --progress-num=1,2 "Built target hydro"
 .PHONY : CMakeFiles/hydro.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/hydro.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hydro.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/Compiler-cpp-hydro/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles 0
 .PHONY : CMakeFiles/hydro.dir/rule
 
 # Convenience name for target.

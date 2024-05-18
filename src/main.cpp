@@ -41,9 +41,11 @@ int main(int argc, char *argv[]) {
     std::cout << c.value.value() << " ";
 
   Parser parser(tokens);
-  std::optional<NodeBody> ne = parser.parse();
+  std::optional<NodeExit> AST = parser.parse();
 
-  std::cout << "\n" << ne.value().values.size() << std::endl;
+  std::cout << "\n"
+            << std::get<NodeExitExpr>(AST.value().value).value->value.value()
+            << std::endl;
 
   return 0;
 }

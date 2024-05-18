@@ -3,25 +3,19 @@
 
 #include <cstdlib>
 #include <optional>
+#include <variant>
 #include <vector>
 
 #include "tokenizer.h"
 
-class NodeConstructor {};
-
-class NodeBody : public NodeConstructor {
+class NodeExitExpr {
 public:
-  std::vector<NodeConstructor> values;
+  std::optional<Token> value;
 };
 
-class NodeExpr : public NodeConstructor {
+class NodeExit {
 public:
-  std::vector<Token> values;
-};
-
-class NodeExit : public NodeConstructor {
-public:
-  NodeExpr value;
+  std::variant<NodeExitExpr> value;
 };
 
 class Parser {
@@ -49,17 +43,16 @@ public:
   Parser(std::vector<Token> tokens) : tokens{std::move(tokens)} {}
   ~Parser() = default;
 
-  std::optional<NodeBody> parse() noexcept {
-    NodeBody node_body;
+  std::optional<NodeExit> parse() noexcept {
+    NodeExit nodeExit;
 
     if (peek().has_value() && peek()->type == TokenType::Exit) {
       while (peek().has_value()) {
-        NodeExit node_exit;
         consume();
         if (peek()->type == TokenType::ParenOpen) {
           consume();
           while (peek().has_value() && peek()->type == TokenType::IntLit) {
-            node_exit.value.values.push_back(peek().value());
+            std::get<NodeExitExpr>(nodeExit.value).value = peek().value();
             consume();
           }
           if (peek()->type != TokenType::ParenClose) {
@@ -72,7 +65,7 @@ public:
         }
 
         consume();
-        if (node_exit.value.values.size() != 1) {
+        if (!std::get<NodeExitExpr>(nodeExit.value).value.has_value()) {
           std::cerr << "\nArgumentos incorretos!" << std::endl;
           exit(EXIT_FAILURE);
         }
@@ -80,10 +73,9 @@ public:
           std::cerr << "\nFalta uso de \";\"" << std::endl;
           exit(EXIT_FAILURE);
         }
-        node_body.values.push_back(node_exit);
         consume();
       }
-      return node_body;
+      return nodeExit;
     } else {
       std::cerr << "\nMetodo não reconhecido!" << std::endl;
       exit(EXIT_FAILURE);
