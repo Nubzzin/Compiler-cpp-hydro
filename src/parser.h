@@ -63,11 +63,11 @@ public:
             consume();
           }
           if (peek()->type != TokenType::ParenClose) {
-            std::cerr << "\nFalta fechar parenteses" << std::endl;
+            std::cerr << "Falta fechar parenteses" << std::endl;
             exit(EXIT_FAILURE);
           }
         } else {
-          std::cerr << "\nFalta abrir parenteses" << std::endl;
+          std::cerr << "Falta abrir parenteses" << std::endl;
           exit(EXIT_FAILURE);
         }
 

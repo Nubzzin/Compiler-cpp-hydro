@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   // }
 
   // Test time
-  std::fstream file(argv[1], std::ios::in);
+  std::fstream file("test.hy" /*argv[1]*/, std::ios::in);
   if (!file.is_open()) {
     if (argv[1] != NULL) {
       std::cerr << "Falha ao encontrar arquivo: " << argv[1] << std::endl;
