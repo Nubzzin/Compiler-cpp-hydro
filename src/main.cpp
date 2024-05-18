@@ -7,13 +7,14 @@
 #include <sstream>
 #include <vector>
 
+#include "constructor.h"
 #include "parser.h"
 #include "tokenizer.h"
 
 int main(int argc, char *argv[]) {
   // DEBUG
   // if (argc != 2) {
-  //   std::cerr << "Muitos argumentos!" << std::endl;
+  //   std::cerr << "Uso: hydro [filename.hy]" << std::endl;
   //   return EXIT_FAILURE;
   // }
 
@@ -47,5 +48,11 @@ int main(int argc, char *argv[]) {
             << std::get<NodeExitExpr>(AST.value().value).value->value.value()
             << std::endl;
 
-  return 0;
+  Constructor construc(AST);
+
+  construc.constructor();
+
+  system("g++ -o hydro a.cpp");
+
+  return EXIT_SUCCESS;
 }
