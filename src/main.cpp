@@ -7,9 +7,9 @@
 #include <sstream>
 #include <vector>
 
-#include "constructor.h"
-#include "parser.h"
-#include "tokenizer.h"
+#include "constructor.hpp"
+#include "parser.hpp"
+#include "tokenizer.hpp"
 
 int main(int argc, char *argv[]) {
   // DEBUG
@@ -36,23 +36,30 @@ int main(int argc, char *argv[]) {
   Tokenizer tokenizer(contents.str());
   std::vector<Token> tokens = tokenizer.tokenize();
 
+  // TODO remover debugs depois de pronto
+  // DEBUG Tokens
   std::cout << "Tokens size: " << tokens.size() << std::endl;
 
+  std::cout << "Tokens: ";
   for (Token c : tokens)
     std::cout << c.value.value() << " ";
+  // DEBUG END
 
   Parser parser(tokens);
   std::optional<NodeExit> AST = parser.parse();
 
-  std::cout << "\n"
-            << std::get<NodeExitExpr>(AST.value().value).value->value.value()
+  // DEBUG NodeExitExpr value
+  std::cout << "\nNodeExitExpr value: "
+            << std::get<NodeExitExpr>(AST.value().exitvalue)
+                   .exitExprvalue->value.value()
             << std::endl;
+  // DEBUG END
 
   Constructor construc(AST);
 
   construc.constructor();
 
-  system("g++ -o hydro a.cpp");
+  system("gcc -o hydro a.c");
 
   return EXIT_SUCCESS;
 }

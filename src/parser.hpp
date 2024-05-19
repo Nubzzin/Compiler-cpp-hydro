@@ -6,16 +6,16 @@
 #include <variant>
 #include <vector>
 
-#include "tokenizer.h"
+#include "tokenizer.hpp"
 
 class NodeExitExpr {
 public:
-  std::optional<Token> value;
+  std::optional<Token> exitExprvalue;
 };
 
 class NodeExit {
 public:
-  std::variant<NodeExitExpr> value;
+  std::variant<NodeExitExpr> exitvalue;
 };
 
 class Parser {
@@ -52,7 +52,8 @@ public:
         if (peek()->type == TokenType::ParenOpen) {
           consume();
           while (peek().has_value() && peek()->type == TokenType::IntLit) {
-            std::get<NodeExitExpr>(nodeExit.value).value = peek().value();
+            std::get<NodeExitExpr>(nodeExit.exitvalue).exitExprvalue =
+                peek().value();
             consume();
           }
           if (peek()->type != TokenType::ParenClose) {
@@ -65,7 +66,8 @@ public:
         }
 
         consume();
-        if (!std::get<NodeExitExpr>(nodeExit.value).value.has_value()) {
+        if (!std::get<NodeExitExpr>(nodeExit.exitvalue)
+                 .exitExprvalue.has_value()) {
           std::cerr << "\nArgumentos incorretos!" << std::endl;
           exit(EXIT_FAILURE);
         }
