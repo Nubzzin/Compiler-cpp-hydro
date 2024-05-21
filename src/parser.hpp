@@ -75,6 +75,9 @@ public:
               std::cerr << "\nFalta fechar parenteses" << std::endl;
             }
           }
+        } else if (peek(-2)->type == TokenType::CurlyClose) {
+          std::cerr << "\nArgumentos pos Main function" << std::endl;
+          exit(EXIT_FAILURE);
         } else {
           std::cerr << "\nFalta abrir Curly" << std::endl;
           exit(EXIT_FAILURE);
