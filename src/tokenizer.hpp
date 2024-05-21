@@ -15,7 +15,9 @@ enum class TokenType {
   SemiCo,
   ParenOpen,
   ParenClose,
-  PlusOp,
+  Main,
+  CurlyOpen,
+  CurlyClose,
 };
 
 struct Token {
@@ -63,9 +65,13 @@ public:
 
         if (buf == "exit") {
           tokens.push_back({.type = TokenType::Exit, .value = buf}); // Debug
-          buf.clear();
-          continue;
         }
+
+        if (buf == "main") {
+          tokens.push_back({.type = TokenType::Main, .value = buf});
+        }
+        buf.clear();
+        continue;
       } else if (std::isdigit(peek().value())) {
         buf.push_back(peek().value());
         consume();
@@ -90,6 +96,18 @@ public:
         continue;
       } else if (peek().value() == ')') {
         tokens.push_back({.type = TokenType::ParenClose,
+                          .value = std::string{peek().value()}}); // Debug
+        consume();
+        buf.clear();
+        continue;
+      } else if (peek().value() == '{') {
+        tokens.push_back({.type = TokenType::CurlyOpen,
+                          .value = std::string{peek().value()}}); // Debug
+        consume();
+        buf.clear();
+        continue;
+      } else if (peek().value() == '}') {
+        tokens.push_back({.type = TokenType::CurlyClose,
                           .value = std::string{peek().value()}}); // Debug
         consume();
         buf.clear();

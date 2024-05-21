@@ -3,9 +3,9 @@
 
 CMakeFiles/hydro.dir/src/main.cpp.o
  /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/main.cpp
- /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/constructor.h
- /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/parser.h
- /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/tokenizer.h
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/constructor.hpp
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/parser.hpp
+ /home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/src/tokenizer.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h

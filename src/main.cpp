@@ -46,12 +46,12 @@ int main(int argc, char *argv[]) {
   // DEBUG END
 
   Parser parser(tokens);
-  std::optional<NodeExit> AST = parser.parse();
+  std::optional<NodeMain> AST = parser.parse();
 
   // DEBUG NodeExitExpr value
   std::cout << "\nNodeExitExpr value: "
-            << std::get<NodeExitExpr>(AST.value().exitvalue)
-                   .exitExprvalue->value.value()
+            << std::get<NodeExit>(AST.value().main_value)
+                   .exit_value.exit_expr_value->value.value()
             << std::endl;
   // DEBUG END
 

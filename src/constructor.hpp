@@ -9,28 +9,30 @@
 
 class Constructor {
 private:
-  const std::optional<NodeExit> AST;
+  const std::optional<NodeMain> AST;
   size_t index{};
 
 public:
-  Constructor(std::optional<NodeExit> &AST) : AST{std::move(AST.value())} {}
+  Constructor(std::optional<NodeMain> &AST) : AST{std::move(AST.value())} {}
   ~Constructor() = default;
 
   void constructor() {
     std::fstream file("a.c", std::ios::out);
     file << "#include <stdlib.h>\n";
-    file << "int main() {";
     if (AST.has_value()) {
-      file << "exit(";
-      if (std::get<NodeExitExpr>(AST.value().exitvalue)
-              .exitExprvalue.has_value()) {
-        file << std::get<NodeExitExpr>(AST.value().exitvalue)
-                    .exitExprvalue->value.value();
+      file << "int main() {";
+      if (std::get<NodeExit>(AST->main_value)
+              .exit_value.exit_expr_value.has_value()) {
+        file << "exit(";
+        file << std::get<NodeExit>(AST.value().main_value)
+                    .exit_value.exit_expr_value->value.value();
       }
       file << ");";
     }
     file << "}";
   }
-};
+}
+
+;
 
 #endif

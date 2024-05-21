@@ -1,1 +1,1 @@
-exit(69);
+main{exit(69);}

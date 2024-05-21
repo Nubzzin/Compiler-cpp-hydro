@@ -8,14 +8,18 @@
 
 #include "tokenizer.hpp"
 
-class NodeExitExpr {
+struct NodeExitExpr {
 public:
-  std::optional<Token> exitExprvalue;
+  std::optional<Token> exit_expr_value;
 };
 
-class NodeExit {
+struct NodeExit {
 public:
-  std::variant<NodeExitExpr> exitvalue;
+  NodeExitExpr exit_value;
+};
+
+struct NodeMain {
+  std::variant<NodeExit> main_value;
 };
 
 class Parser {
@@ -43,31 +47,42 @@ public:
   Parser(std::vector<Token> tokens) : tokens{std::move(tokens)} {}
   ~Parser() = default;
 
-  std::optional<NodeExit> parse() noexcept {
-    NodeExit nodeExit;
+  std::optional<NodeMain> parse() noexcept {
+    NodeMain node_main;
 
-    if (peek().has_value() && peek()->type == TokenType::Exit) {
+    if (peek().has_value() && peek()->type == TokenType::Main) {
       while (peek().has_value()) {
         consume();
-        if (peek()->type == TokenType::ParenOpen) {
+        if (peek()->type == TokenType::CurlyOpen) {
           consume();
-          while (peek().has_value() && peek()->type == TokenType::IntLit) {
-            std::get<NodeExitExpr>(nodeExit.exitvalue).exitExprvalue =
-                peek().value();
+          if (peek().has_value() && peek()->type == TokenType::Exit) {
             consume();
-          }
-          if (peek()->type != TokenType::ParenClose) {
-            std::cerr << "Falta fechar parenteses" << std::endl;
-            exit(EXIT_FAILURE);
+
+            if (peek()->type != TokenType::ParenOpen) {
+              std::cerr << "\nFalta abrir parenteses" << std::endl;
+              exit(EXIT_FAILURE);
+            }
+            consume();
+            if (peek()->type == TokenType::IntLit) {
+              std::get<NodeExit>(node_main.main_value)
+                  .exit_value.exit_expr_value = peek().value();
+            } else {
+              std::cerr << "\nExit sem argumentos" << std::endl;
+              exit(EXIT_FAILURE);
+            }
+            consume();
+            if (peek()->type != TokenType::ParenClose) {
+              std::cerr << "\nFalta fechar parenteses" << std::endl;
+            }
           }
         } else {
-          std::cerr << "Falta abrir parenteses" << std::endl;
+          std::cerr << "\nFalta abrir Curly" << std::endl;
           exit(EXIT_FAILURE);
         }
 
         consume();
-        if (!std::get<NodeExitExpr>(nodeExit.exitvalue)
-                 .exitExprvalue.has_value()) {
+        if (!std::get<NodeExit>(node_main.main_value)
+                 .exit_value.exit_expr_value.has_value()) {
           std::cerr << "\nArgumentos incorretos!" << std::endl;
           exit(EXIT_FAILURE);
         }
@@ -76,10 +91,15 @@ public:
           exit(EXIT_FAILURE);
         }
         consume();
+        if (peek()->type != TokenType::CurlyClose) {
+          std::cerr << "\nFalta fechar Curly" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        consume();
       }
-      return nodeExit;
+      return node_main;
     } else {
-      std::cerr << "\nMetodo não reconhecido!" << std::endl;
+      std::cerr << "\n\"Main\" não encontrado!" << std::endl;
       exit(EXIT_FAILURE);
     }
     return {};
