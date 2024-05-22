@@ -18,8 +18,12 @@ public:
   NodeExitExpr exit_value;
 };
 
+struct NodeMainExpr {
+  std::variant<NodeExit> main_expr_value;
+};
+
 struct NodeMain {
-  std::variant<NodeExit> main_value;
+  std::vector<NodeMainExpr> main_values;
 };
 
 class Parser {
@@ -50,24 +54,24 @@ public:
   ~Parser() = default;
 
   std::optional<NodeMain> parse() noexcept {
-    NodeMain node_main;
-
     // Buscando por main
     if (peek().has_value() && peek()->type == TokenType::Main) {
+      NodeMain node_main;
       while (peek().has_value()) {
         consume();
         if (peek()->type == TokenType::CurlyOpen) {
           consume();
+          NodeMainExpr node_main_expr;
           if (peek().has_value() && peek()->type == TokenType::Exit) {
             consume();
+            NodeExit node_exit;
             if (peek()->type != TokenType::ParenOpen) {
               std::cerr << "\nFalta abrir parenteses" << std::endl;
               exit(EXIT_FAILURE);
             }
             consume();
             if (peek()->type == TokenType::IntLit) {
-              std::get<NodeExit>(node_main.main_value)
-                  .exit_value.exit_expr_value = peek().value();
+              node_exit.exit_value.exit_expr_value = peek().value();
             } else {
               std::cerr << "\nExit sem argumentos" << std::endl;
               exit(EXIT_FAILURE);
@@ -76,6 +80,13 @@ public:
             if (peek()->type != TokenType::ParenClose) {
               std::cerr << "\nFalta fechar parenteses" << std::endl;
             }
+            consume();
+            if (peek()->type != TokenType::SemiCo) {
+              std::cerr << "\nFalta uso de \";\"" << std::endl;
+              exit(EXIT_FAILURE);
+            }
+            node_main_expr.main_expr_value = node_exit;
+            node_main.main_values.push_back(node_main_expr);
           }
         } else if (peek(-2)->type == TokenType::CurlyClose) {
           std::cerr << "\nArgumentos pos Main function" << std::endl;
@@ -85,16 +96,6 @@ public:
           exit(EXIT_FAILURE);
         }
 
-        consume();
-        if (!std::get<NodeExit>(node_main.main_value)
-                 .exit_value.exit_expr_value.has_value()) {
-          std::cerr << "\nArgumentos incorretos!" << std::endl;
-          exit(EXIT_FAILURE);
-        }
-        if (peek()->type != TokenType::SemiCo) {
-          std::cerr << "\nFalta uso de \";\"" << std::endl;
-          exit(EXIT_FAILURE);
-        }
         consume();
         if (peek()->type != TokenType::CurlyClose) {
           std::cerr << "\nFalta fechar Curly" << std::endl;

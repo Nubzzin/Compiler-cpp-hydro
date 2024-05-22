@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
   // DEBUG NodeExitExpr value
   std::cout << "\nNodeExitExpr value: "
-            << std::get<NodeExit>(AST.value().main_value)
+            << std::get<NodeExit>(AST.value().main_values[0].main_expr_value)
                    .exit_value.exit_expr_value->value.value()
             << std::endl;
   // DEBUG END

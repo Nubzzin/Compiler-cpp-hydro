@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+// Tipos de Tokens
 enum class TokenType {
   Exit,
   IntLit,
@@ -30,7 +31,6 @@ private:
   const std::string src;
   size_t index{};
 
-  // Lendo item no index atual
   std::optional<char> peek(size_t offset = 0) {
     if (src[index + offset]) {
       return src[index + offset];
@@ -39,7 +39,6 @@ private:
     }
   }
 
-  // Lendo item no index atual e em seguido passando para o proximo
   std::optional<char> consume() {
     if (!src[index++]) {
       return src[index++];
