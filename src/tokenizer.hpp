@@ -19,6 +19,8 @@ enum class TokenType {
   Main,
   CurlyOpen,
   CurlyClose,
+  Str,
+  Print,
 };
 
 struct Token {
@@ -66,11 +68,21 @@ public:
 
         if (buf == "exit") {
           tokens.push_back({.type = TokenType::Exit, .value = buf}); // Debug
+          buf.clear();
+          continue;
         }
 
         if (buf == "main") {
-          tokens.push_back({.type = TokenType::Main, .value = buf});
+          tokens.push_back({.type = TokenType::Main, .value = buf}); // Debug
+          buf.clear();
+          continue;
         }
+        if (buf == "print") {
+          tokens.push_back({.type = TokenType::Print, .value = buf}); // Debug
+          buf.clear();
+          continue;
+        }
+        tokens.push_back({.type = TokenType::Str, .value = buf});
         buf.clear();
         continue;
       } else if (std::isdigit(peek().value())) {

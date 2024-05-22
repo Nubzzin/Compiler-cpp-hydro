@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <optional>
+#include <variant>
 
 #include "parser.hpp"
 #include "tokenizer.hpp"
@@ -38,19 +39,41 @@ public:
     std::fstream file("a.c", std::ios::out);
     file << "#include <stdlib.h>\n";
     file << "#include <stdio.h>\n";
-    if (AST.main_values.size() > 0) {
-      file << "int main() {";
+    file << "int main() {";
+    while (peek().has_value()) {
+      std::cout << "Index: " << peek().value().expr_value.index() << std::endl;
+      if (peek()->expr_value.index() == 0) {
+        file << "exit(";
+        file << std::get<NodeExit>(peek()->expr_value)
+                    .exit_value.expr_value->value.value();
+        file << ");";
 
-      while (peek().has_value()) {
-        if (std::get<NodeExit>(peek().value().main_expr_value)
-                .exit_value.exit_expr_value.has_value()) {
-          file << "exit("
-               << std::get<NodeExit>(peek().value().main_expr_value)
-                      .exit_value.exit_expr_value->value.value()
-               << ");";
-        }
-        consume();
+        std::cout << "\nEXIT ENTRY" << std::endl;
       }
+      if (peek()->expr_value.index() == 1) {
+        if (std::get<NodePrint>(peek()->expr_value)
+                .print_value.expr_value->type == TokenType::Str) {
+          file << "printf(\"%s\",\"";
+        } else if (std::get<NodePrint>(peek()->expr_value)
+                       .print_value.expr_value->type == TokenType::IntLit) {
+          file << "printf(\"%d\",";
+        }
+
+        file << std::get<NodePrint>(peek()->expr_value)
+                    .print_value.expr_value->value.value();
+
+        if (std::get<NodePrint>(peek()->expr_value)
+                .print_value.expr_value->type == TokenType::Str) {
+          file << "\");";
+        }
+        if (std::get<NodePrint>(peek()->expr_value)
+                .print_value.expr_value->type == TokenType::IntLit) {
+          file << ");";
+        }
+
+        std::cout << "\nPRINT ENTRY" << std::endl;
+      }
+      consume();
     }
     file << "}";
   }

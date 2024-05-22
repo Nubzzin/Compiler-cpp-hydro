@@ -53,11 +53,9 @@ int main(int argc, char *argv[]) {
   Parser parser(tokens);
   std::optional<NodeMain> AST = parser.parse();
 
-  // DEBUG NodeExitExpr value
-  std::cout << "\nNodeExitExpr value: "
-            << std::get<NodeExit>(AST.value().main_values[0].main_expr_value)
-                   .exit_value.exit_expr_value->value.value()
-            << std::endl;
+  // DEBUG NodeExpr value
+  std::cout << "\nAST size: " << AST->main_values.size() << std::endl;
+
   // DEBUG END
 
   // Construindo arquivo

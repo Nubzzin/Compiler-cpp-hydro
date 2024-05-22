@@ -1,3 +1,3 @@
 #include <stdlib.h>
 #include <stdio.h>
-int main() {exit(69);}
+int main() {printf("%d",69);exit(69);}
