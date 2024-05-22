@@ -12,13 +12,16 @@
 #include "tokenizer.hpp"
 
 int main(int argc, char *argv[]) {
-  // DEBUG
+  // TODO remover debugs depois de pronto
+
+  // DEBUG evitando erro no debug
   // if (argc != 2) {
   //   std::cerr << "Uso: hydro [filename.hy]" << std::endl;
   //   return EXIT_FAILURE;
   // }
+  // DEBUG
 
-  // Test time
+  // Abrindo e verificando se arquivo é valido
   std::fstream file("test.hy" /*argv[1]*/, std::ios::in);
   if (!file.is_open()) {
     if (argv[1] != NULL) {
@@ -29,14 +32,15 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  // Lendo arquivo
   std::stringstream contents;
   contents << file.rdbuf();
   file.close();
 
+  // Realizando Tokenização
   Tokenizer tokenizer(contents.str());
   std::vector<Token> tokens = tokenizer.tokenize();
 
-  // TODO remover debugs depois de pronto
   // DEBUG Tokens
   std::cout << "Tokens size: " << tokens.size() << std::endl;
 
@@ -45,6 +49,7 @@ int main(int argc, char *argv[]) {
     std::cout << c.value.value() << " ";
   // DEBUG END
 
+  // Parsing tokens
   Parser parser(tokens);
   std::optional<NodeMain> AST = parser.parse();
 
@@ -55,11 +60,13 @@ int main(int argc, char *argv[]) {
             << std::endl;
   // DEBUG END
 
+  // Construindo arquivo
   Constructor construc(AST);
-
   construc.constructor();
 
-  system("gcc -o hydro a.c");
+  // Compilando arquivo c
+  // Linux
+  system("gcc -o aLinux.out a.c");
 
   return EXIT_SUCCESS;
 }

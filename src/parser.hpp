@@ -27,6 +27,7 @@ private:
   const std::vector<Token> tokens;
   size_t index{};
 
+  // Lendo item no index atual
   std::optional<Token> peek(size_t offset = 0) {
     if (tokens.size() > (index + offset)) {
       return tokens[index + offset];
@@ -35,6 +36,7 @@ private:
     }
   }
 
+  // Lendo item no index atual e em seguido passando para o proximo
   std::optional<Token> consume() {
     if (tokens.size() > index) {
       return tokens[index++];
@@ -50,6 +52,7 @@ public:
   std::optional<NodeMain> parse() noexcept {
     NodeMain node_main;
 
+    // Buscando por main
     if (peek().has_value() && peek()->type == TokenType::Main) {
       while (peek().has_value()) {
         consume();
@@ -57,7 +60,6 @@ public:
           consume();
           if (peek().has_value() && peek()->type == TokenType::Exit) {
             consume();
-
             if (peek()->type != TokenType::ParenOpen) {
               std::cerr << "\nFalta abrir parenteses" << std::endl;
               exit(EXIT_FAILURE);
