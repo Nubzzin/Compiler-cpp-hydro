@@ -4,5 +4,6 @@ Este repositório contém um compilador escrito em C++ para uma linguagem invent
 Requisitos:
 - Compilador g++ (Linux)
 - Compilador minGW (Windows)
+- Cmake
 
 Portabilidade para windows não foi verificada
