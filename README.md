@@ -6,4 +6,4 @@ Requisitos:
 - Compilador minGW (Windows)
 - Cmake
 
-Portabilidade para windows não foi verificada
+! aWin.exe e aLinux.out é o resultado da compilação do programa !
