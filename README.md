@@ -1,4 +1,4 @@
-# Compilador feito em c++
+# Compilador feito em c++ | Compiler made in c++
 Este repositório contém um compilador escrito em C++ para uma linguagem inventada. O compilador traduz o código da linguagem inventada para C, que pode então ser compilado usando um compilador C padrão.
 
 Requisitos:
