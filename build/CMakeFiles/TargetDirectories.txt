@@ -1,3 +1,0 @@
-/home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles/hydro.dir
-/home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles/edit_cache.dir
-/home/nubsdre/Documentos/code/projetos/compiler/Compiler-cpp-hydro/build/CMakeFiles/rebuild_cache.dir
